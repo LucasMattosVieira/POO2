@@ -1,6 +1,6 @@
 package pulos;
 
-public class PuloMedio extends Pulo{
+public class PuloMedio implements Pulo{
     
     @Override
     public void pular() {

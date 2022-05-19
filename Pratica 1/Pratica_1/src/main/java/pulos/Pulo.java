@@ -1,6 +1,6 @@
 package pulos;
 
-public abstract class Pulo {
+public interface Pulo {
     
     public abstract void pular();
     

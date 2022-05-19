@@ -1,6 +1,6 @@
 package ataques;
 
-public class AtaqueMedio extends Ataque{
+public class AtaqueMedio implements Ataque{
     
     @Override
     public void atacar() {

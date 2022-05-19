@@ -1,6 +1,6 @@
 package corre;
 
-public class CorreDevagar extends Corre{
+public class CorreDevagar implements Corre{
     
     @Override
     public void correr() {

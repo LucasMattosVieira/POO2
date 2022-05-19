@@ -1,6 +1,6 @@
 package corre;
 
-public abstract class Corre {
+public interface Corre {
     
     public abstract void correr();
     
