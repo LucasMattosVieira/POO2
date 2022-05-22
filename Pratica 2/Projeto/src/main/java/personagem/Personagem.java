@@ -1,0 +1,68 @@
+package personagem;
+
+import pulo.*;
+import ataque.*;
+import corre.*;
+import estado_personagem.*;
+
+public abstract class Personagem {
+    private Ataque ataque;
+    private Pulo pulo;
+    private Corre corre;
+    private EstadoPersonagem estado;
+    private double energia;
+    
+    public Personagem() {
+        this.setEnergia(70.0);
+        this.setEstado(new PersonagemNormal(this));
+    }
+    
+    public void setAtaque(Ataque ataque) {
+        this.ataque = ataque;
+    }
+
+    public void setPulo(Pulo pulo) {
+        this.pulo = pulo;
+    }
+
+    public void setCorre(Corre corre) {
+        this.corre = corre;
+    }
+    
+    public void setEnergia(double energia) {
+        this.energia = energia > 0.0 ? (energia <= 100.0 ? energia : 100.0) : 0.0;
+    }
+    
+    public double getEnergia() {
+        return energia;
+    }
+    
+    public EstadoPersonagem getEstado() {
+        return this.estado;
+    }
+
+    public EstadoPersonagem setEstado(EstadoPersonagem estado) {
+        this.estado = estado;
+        return this.estado;
+    }
+
+    public void atacar() {
+        this.ataque.atacar();
+    }
+    
+    public void pular() {
+        this.pulo.pular();
+    }
+
+    public void correr() {
+        this.corre.correr();
+    }
+    
+    public void sofreAtaque(double dano){
+        this.getEstado().sofreAtaque(dano);
+    }
+    
+    public void pegaRecompensa(double cura){
+        this.getEstado().pegaRecompensa(cura);
+    }
+}
