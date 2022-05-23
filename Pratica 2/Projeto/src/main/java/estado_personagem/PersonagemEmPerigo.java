@@ -22,7 +22,7 @@ public class PersonagemEmPerigo extends EstadoPersonagem {
     protected void verificaEnergia() {
         if(this.getPersonagem().getEnergia() <= 0.0) {
            this.getPersonagem().setEstado(new PersonagemMorto(this.getPersonagem())).verificaEnergia(); 
-        } else if(this.getPersonagem().getEnergia() > 30.0) {
+        } else if(this.getPersonagem().getEnergia() >= 30.0) {
            this.getPersonagem().setEstado(new PersonagemNormal(this.getPersonagem())).verificaEnergia(); 
         }
     }

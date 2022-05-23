@@ -20,7 +20,7 @@ public class PersonagemNormal extends EstadoPersonagem {
 
     @Override
     protected void verificaEnergia() {
-        if(this.getPersonagem().getEnergia() <= 30.0) {
+        if(this.getPersonagem().getEnergia() < 30.0) {
             this.getPersonagem().setEstado(new PersonagemEmPerigo(this.getPersonagem())).verificaEnergia();
         } else if(this.getPersonagem().getEnergia() > 70.0) {
             // Não precisa, de fato, chamar `verificaEnergia()` pois não há mais "estados superiores"
