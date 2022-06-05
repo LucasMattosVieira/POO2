@@ -72,9 +72,8 @@ public abstract class Personagem {
         this.getEstado().pegaRecompensa(cura);
     }
     
-    public Escudo setEscudo(Escudo escudo) {
+    public void setEscudo(Escudo escudo) {
         this.escudo = escudo;
-        return this.escudo;
     }
     
     public Escudo getEscudo() {

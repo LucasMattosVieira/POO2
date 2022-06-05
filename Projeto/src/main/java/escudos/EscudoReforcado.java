@@ -13,7 +13,7 @@ public class EscudoReforcado extends Escudo {
             danoNaoBloqueado = dano - 10.0;
         }
             
-        System.out.println("Escudo Abençoado absorveu "+danoBloqueado+" de dano.");
+        System.out.println("Escudo Reforçado absorveu "+danoBloqueado+" de dano.");
         
         if (danoNaoBloqueado > 0 && getProximaCamada() != null) {
             return getProximaCamada().sofreAtaque(danoNaoBloqueado);
