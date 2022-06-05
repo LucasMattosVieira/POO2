@@ -4,6 +4,7 @@ import pulo.*;
 import ataque.*;
 import corre.*;
 import estado_personagem.*;
+import escudos.*;
 
 public abstract class Personagem {
     private Ataque ataque;
@@ -11,6 +12,7 @@ public abstract class Personagem {
     private Corre corre;
     private EstadoPersonagem estado;
     private double energia;
+    private Escudo escudo;
     
     public Personagem() {
         this.setEnergia(70.0);
@@ -58,11 +60,25 @@ public abstract class Personagem {
         this.corre.correr();
     }
     
-    public void sofreAtaque(double dano){
-        this.getEstado().sofreAtaque(dano);
+    public void sofreAtaque(double dano) {
+        double danoNaoBloqueado = dano;
+        if (this.getEscudo() != null) {
+            danoNaoBloqueado = this.getEscudo().sofreAtaque(danoNaoBloqueado);
+        }
+        this.getEstado().sofreAtaque(danoNaoBloqueado);
     }
     
-    public void pegaRecompensa(double cura){
+    public void pegaRecompensa(double cura) {
         this.getEstado().pegaRecompensa(cura);
     }
+    
+    public Escudo setEscudo(Escudo escudo) {
+        this.escudo = escudo;
+        return this.escudo;
+    }
+    
+    public Escudo getEscudo() {
+        return this.escudo;
+    }
+        
 }
