@@ -1,11 +1,7 @@
 package ataque;
 
-public class AtaqueMedio implements Ataque{
-    
-    @Override
-    public void atacar() {
-        System.out.println("Ataque médio!");
+public class AtaqueMedio extends Ataque {
+    public AtaqueMedio() {
+        this.setDano(10.0);
     }
-    
-    
 }

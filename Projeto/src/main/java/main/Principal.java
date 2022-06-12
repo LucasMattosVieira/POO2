@@ -1,8 +1,8 @@
 package main;
 
-
 import personagem.*;
 import escudos.*;
+import poderes.*;
 
 public class Principal {
     public static void main(String[] args) {
@@ -32,7 +32,17 @@ public class Principal {
         personagem.sofreAtaque(115);
         System.out.printf("%f - %s\n", personagem.getEnergia(), personagem.getEstado().getClass().getName());
         
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+        // Testes do padrão Decorator
         
-
+        Personagem personagemDecorado = new Personagem02();
+        
+        System.out.printf("Valor do dano sem ataque decorado: %.2f\n", personagemDecorado.atacar());
+        personagemDecorado.setAtaque(new PoderMagia(personagemDecorado.getAtaque()));
+        System.out.printf("Valor do dano com ataque decorado por magia: %.2f\n", personagemDecorado.atacar());
+        personagemDecorado.setAtaque(new PoderFogo(personagemDecorado.getAtaque()));
+        System.out.printf("Valor do dano com ataque decorado por magia e fogo: %.2f\n", personagemDecorado.atacar());
+        personagemDecorado.setAtaque(new PoderEletrico(personagemDecorado.getAtaque()));
+        System.out.printf("Valor do dano com ataque decorado por magia, fogo e eletricidade: %.2f\n", personagemDecorado.atacar());
     }
 }

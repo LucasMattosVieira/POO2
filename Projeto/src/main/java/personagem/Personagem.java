@@ -22,6 +22,10 @@ public abstract class Personagem {
     public void setAtaque(Ataque ataque) {
         this.ataque = ataque;
     }
+    
+    public Ataque getAtaque() {
+        return this.ataque;
+    }
 
     public void setPulo(Pulo pulo) {
         this.pulo = pulo;
@@ -48,8 +52,8 @@ public abstract class Personagem {
         return this.estado;
     }
 
-    public void atacar() {
-        this.ataque.atacar();
+    public double atacar() {
+        return this.ataque.atacar();
     }
     
     public void pular() {
@@ -62,9 +66,11 @@ public abstract class Personagem {
     
     public void sofreAtaque(double dano) {
         double danoNaoBloqueado = dano;
+        
         if (this.getEscudo() != null) {
             danoNaoBloqueado = this.getEscudo().sofreAtaque(danoNaoBloqueado);
         }
+        
         this.getEstado().sofreAtaque(danoNaoBloqueado);
     }
     
@@ -78,6 +84,5 @@ public abstract class Personagem {
     
     public Escudo getEscudo() {
         return this.escudo;
-    }
-        
+    } 
 }
