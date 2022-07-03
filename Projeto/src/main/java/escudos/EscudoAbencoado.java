@@ -3,10 +3,10 @@ package escudos;
 public class EscudoAbencoado extends Escudo {
     
     public double sofreAtaque(double dano) {
-        double danoBloqueado;
+        double danoBloqueado = 0;
         double danoNaoBloqueado = 0;
         
-        if (dano < 100.0) {
+        if (dano <= 100.0) {
             danoBloqueado = dano;
         } else {
             danoBloqueado = 100.0;
