@@ -2,6 +2,7 @@ package main;
 
 import personagem.*;
 import escudos.*;
+import fabricas.*;
 import poderes.*;
 
 public class Principal {
@@ -44,5 +45,23 @@ public class Principal {
         System.out.printf("Valor do dano com ataque decorado por magia e fogo: %.2f\n", personagemDecorado.atacar());
         personagemDecorado.setAtaque(new PoderEletrico(personagemDecorado.getAtaque()));
         System.out.printf("Valor do dano com ataque decorado por magia, fogo e eletricidade: %.2f\n", personagemDecorado.atacar());
+
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+        // Testes do padrão Factory
+
+        JogoSimples jogoS = new JogoSimples();
+        JogoAvancado jogoA = new JogoAvancado();
+
+        Personagem personagemS1 = jogoS.criarPersonagem();
+        Personagem personagemS2 = jogoS.criarPersonagem();
+
+        System.out.printf("Personagem simples 1:\n - %s, %s\n", personagemS1.getClass().getName(), personagemS1.getAtaque().getClass().getName());
+        System.out.printf("Personagem simples 2:\n - %s, %s\n", personagemS2.getClass().getName(), personagemS2.getAtaque().getClass().getName());
+
+        Personagem personagemA1 = jogoA.criarPersonagem();
+        Personagem personagemA2 = jogoA.criarPersonagem();
+
+        System.out.printf("Personagem avançado 1:\n - %s, ataque: %.2f\n", personagemA1.getClass().getName(), personagemA1.getAtaque().getDano());
+        System.out.printf("Personagem avançado 2:\n - %s, ataque: %.2f\n", personagemA2.getClass().getName(), personagemA2.getAtaque().getDano());
     }
 }
