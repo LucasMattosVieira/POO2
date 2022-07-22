@@ -63,5 +63,15 @@ public class Principal {
 
         System.out.printf("Personagem avançado 1:\n - %s, ataque: %.2f\n", personagemA1.getClass().getName(), personagemA1.getAtaque().getDano());
         System.out.printf("Personagem avançado 2:\n - %s, ataque: %.2f\n", personagemA2.getClass().getName(), personagemA2.getAtaque().getDano());
+
+
+        Jogo jogo1 = new JogoSimples();
+        Jogo jogo2 = new JogoAvancado();
+
+        System.out.println("\n\nJogo simples:\n");
+        jogo1.jogar();
+        System.out.println("\n\nJogo avançado:\n");
+        jogo2.jogar();
+
     }
 }
