@@ -5,7 +5,9 @@ import corre.CorreRapido;
 import personagem.*;
 
 public class PersonagemForte extends EstadoPersonagem {
-    public PersonagemForte(Personagem personagem) {
+    private static PersonagemForte instancia = null;
+    
+    private PersonagemForte(Personagem personagem) {
         super(personagem);
         
         this.getPersonagem().setAtaque(new AtaqueForte());
@@ -21,7 +23,20 @@ public class PersonagemForte extends EstadoPersonagem {
     @Override
     protected void verificaEnergia() {
         if(this.getPersonagem().getEnergia() <= 70.0) {
-           this.getPersonagem().setEstado(new PersonagemNormal(this.getPersonagem())).verificaEnergia();
+           this.getPersonagem().setEstado(PersonagemNormal.getInstancia(this.getPersonagem())).verificaEnergia();
         }
+    }
+    
+    public static synchronized PersonagemForte getInstancia(Personagem personagem) {
+        if(instancia == null && personagem != null) {
+            instancia = new PersonagemForte(personagem);
+        } 
+        
+        if(instancia != null) {
+            instancia.getPersonagem().setAtaque(new AtaqueForte());
+            instancia.getPersonagem().setCorre(new CorreRapido());
+        }
+        
+        return instancia;
     }
 }

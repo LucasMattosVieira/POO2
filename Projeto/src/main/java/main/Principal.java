@@ -49,8 +49,8 @@ public class Principal {
         //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
         // Testes do padrão Factory
 
-        JogoSimples jogoS = new JogoSimples();
-        JogoAvancado jogoA = new JogoAvancado();
+        JogoSimples jogoS = JogoSimples.getInstancia();
+        JogoAvancado jogoA = JogoAvancado.getInstancia();
 
         Personagem personagemS1 = jogoS.criarPersonagem();
         Personagem personagemS2 = jogoS.criarPersonagem();
@@ -65,8 +65,8 @@ public class Principal {
         System.out.printf("Personagem avançado 2:\n - %s, ataque: %.2f\n", personagemA2.getClass().getName(), personagemA2.getAtaque().getDano());
 
 
-        Jogo jogo1 = new JogoSimples();
-        Jogo jogo2 = new JogoAvancado();
+        Jogo jogo1 = JogoSimples.getInstancia();
+        Jogo jogo2 = JogoAvancado.getInstancia();
 
         System.out.println("\n\nJogo simples:\n");
         jogo1.jogar();

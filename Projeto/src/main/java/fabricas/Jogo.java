@@ -4,7 +4,6 @@ import estado_personagem.PersonagemMorto;
 import personagem.Personagem;
 
 public abstract class Jogo {
-    
     public abstract Personagem criarPersonagem();
 
     public void jogar() {
@@ -46,7 +45,5 @@ public abstract class Jogo {
             contador++;
         }
         System.out.printf("\n -- Empate -- \n");
-
     }
-
 }

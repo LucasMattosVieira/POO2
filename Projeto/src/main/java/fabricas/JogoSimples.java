@@ -2,10 +2,15 @@ package fabricas;
 
 import personagem.*;
 
-public class JogoSimples extends Jogo{
-
+public class JogoSimples extends Jogo {
+    
+    private static JogoSimples instancia = null;
+    
+    private JogoSimples() {
+        super();
+    }
+    
     public Personagem criarPersonagem() {
-
         Personagem p = null;
 
         double n = Math.random();
@@ -23,7 +28,14 @@ public class JogoSimples extends Jogo{
         }
 
         return p;
-
     }
-
+    
+    public static synchronized JogoSimples getInstancia() {
+        if(instancia == null) {
+            instancia = new JogoSimples();
+        }
+        
+        return instancia;
+    }
+    
 }

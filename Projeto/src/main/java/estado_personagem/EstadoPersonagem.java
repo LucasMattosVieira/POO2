@@ -8,7 +8,6 @@ public abstract class EstadoPersonagem {
     private double limiteInferior;
     private double limiteSuperior;
     
-    
     public EstadoPersonagem(Personagem personagem) {
         this.setPersonagem(personagem);
         setLimites();

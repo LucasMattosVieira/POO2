@@ -3,10 +3,15 @@ package fabricas;
 import personagem.*;
 import poderes.*;
 
-public class JogoAvancado extends Jogo{
+public class JogoAvancado extends Jogo {
+    
+    private static JogoAvancado instancia = null;
+    
+    private JogoAvancado() {
+        super();
+    }
     
     public Personagem criarPersonagem() {
-
         Personagem p = null;
 
         double n = Math.random();
@@ -34,7 +39,14 @@ public class JogoAvancado extends Jogo{
         }
 
         return p;
-
     }
-
+    
+    public static synchronized JogoAvancado getInstancia() {
+        if(instancia == null) {
+            instancia = new JogoAvancado();
+        }
+        
+        return instancia;
+    }
+    
 }

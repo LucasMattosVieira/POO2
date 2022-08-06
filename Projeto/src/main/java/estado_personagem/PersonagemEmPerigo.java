@@ -5,11 +5,10 @@ import corre.CorreMedio;
 import personagem.*;
 
 public class PersonagemEmPerigo extends EstadoPersonagem {
-    public PersonagemEmPerigo(Personagem personagem) {
+    private static PersonagemEmPerigo instancia = null;
+    
+    private PersonagemEmPerigo(Personagem personagem) {
         super(personagem);
-        
-        this.getPersonagem().setAtaque(new AtaqueFraco());
-        this.getPersonagem().setCorre(new CorreMedio());
     }
     
     @Override
@@ -21,9 +20,22 @@ public class PersonagemEmPerigo extends EstadoPersonagem {
     @Override
     protected void verificaEnergia() {
         if(this.getPersonagem().getEnergia() <= 0.0) {
-           this.getPersonagem().setEstado(new PersonagemMorto(this.getPersonagem())).verificaEnergia(); 
+           this.getPersonagem().setEstado(PersonagemMorto.getInstancia(this.getPersonagem())).verificaEnergia(); 
         } else if(this.getPersonagem().getEnergia() >= 30.0) {
-           this.getPersonagem().setEstado(new PersonagemNormal(this.getPersonagem())).verificaEnergia(); 
+           this.getPersonagem().setEstado(PersonagemNormal.getInstancia(this.getPersonagem())).verificaEnergia(); 
         }
+    }
+    
+    public static synchronized PersonagemEmPerigo getInstancia(Personagem personagem) {
+        if(instancia == null && personagem != null) {
+            instancia = new PersonagemEmPerigo(personagem);
+        } 
+        
+        if(instancia != null) {
+            instancia.getPersonagem().setAtaque(new AtaqueFraco());
+            instancia.getPersonagem().setCorre(new CorreMedio());
+        }
+        
+        return instancia;
     }
 }
