@@ -16,7 +16,7 @@ public abstract class Personagem {
     
     public Personagem() {
         this.setEnergia(70.0);
-        this.setEstado(PersonagemNormal.getInstancia(this));
+        this.setEstado(new PersonagemNormal(this));
     }
     
     public void setAtaque(Ataque ataque) {

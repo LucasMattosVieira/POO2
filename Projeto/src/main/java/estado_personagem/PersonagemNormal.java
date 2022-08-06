@@ -5,10 +5,11 @@ import corre.CorreMedio;
 import personagem.*;
 
 public class PersonagemNormal extends EstadoPersonagem {
-    private static PersonagemNormal instancia = null;
-    
-    private PersonagemNormal(Personagem personagem) {
+    public PersonagemNormal(Personagem personagem) {
         super(personagem);
+        
+        this.getPersonagem().setAtaque(new AtaqueMedio());
+        this.getPersonagem().setCorre(new CorreMedio());
     }
     
     @Override
@@ -20,23 +21,10 @@ public class PersonagemNormal extends EstadoPersonagem {
     @Override
     protected void verificaEnergia() {
         if(this.getPersonagem().getEnergia() < 30.0) {
-            this.getPersonagem().setEstado(PersonagemEmPerigo.getInstancia(this.getPersonagem())).verificaEnergia();
+            this.getPersonagem().setEstado(new PersonagemEmPerigo(this.getPersonagem())).verificaEnergia();
         } else if(this.getPersonagem().getEnergia() > 70.0) {
             // Não precisa, de fato, chamar `verificaEnergia()` pois não há mais "estados superiores"
-            this.getPersonagem().setEstado(PersonagemForte.getInstancia(this.getPersonagem()));
+            this.getPersonagem().setEstado(new PersonagemForte(this.getPersonagem()));
         }
-    }
-    
-    public static synchronized PersonagemNormal getInstancia(Personagem personagem) {
-        if(instancia == null && personagem != null) {
-            instancia = new PersonagemNormal(personagem);
-        }
-        
-        if(instancia != null) {
-            instancia.getPersonagem().setAtaque(new AtaqueMedio());
-            instancia.getPersonagem().setCorre(new CorreMedio());
-        }
-        
-        return instancia;
     }
 }
