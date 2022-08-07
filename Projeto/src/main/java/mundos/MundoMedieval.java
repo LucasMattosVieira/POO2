@@ -7,6 +7,12 @@ import personagem.Personagem;
 
 public class MundoMedieval extends MundoAbstrato{
 
+    private static MundoMedieval instancia = null;
+
+    private MundoMedieval() {
+        super();
+    }
+
     @Override
     public Personagem criarPersonagem() {
         Personagem p = new Arqueiro();
@@ -20,4 +26,11 @@ public class MundoMedieval extends MundoAbstrato{
         p.setEscudo(e);  
     }
     
+    public static synchronized MundoMedieval getInstancia() {
+        if(instancia == null) {
+            instancia = new MundoMedieval();
+        }  
+        return instancia;
+    }
+
 }

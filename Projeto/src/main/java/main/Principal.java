@@ -76,8 +76,8 @@ public class Principal {
 
         //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
         // Testes do padrão Abstract Factory
-        MundoAbstrato mundo1 = new MundoMedieval();
-        MundoAbstrato mundo2 = new MundoFuturista();
+        MundoAbstrato mundo1 = MundoMedieval.getInstancia();
+        MundoAbstrato mundo2 = MundoFuturista.getInstancia();
 
         Personagem arqueiro = mundo1.criarPersonagem();
         mundo1.criarDefesa(arqueiro);

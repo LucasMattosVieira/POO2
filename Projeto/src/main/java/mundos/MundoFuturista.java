@@ -7,6 +7,12 @@ import personagem.Robo;
 
 public class MundoFuturista extends MundoAbstrato{
 
+    private static MundoFuturista instancia = null;
+
+    private MundoFuturista() {
+        super();
+    }
+
     @Override
     public Personagem criarPersonagem() {
         Personagem p = new Robo();
@@ -20,4 +26,11 @@ public class MundoFuturista extends MundoAbstrato{
         p.setEscudo(e);
     }
     
+    public static synchronized MundoFuturista getInstancia() {
+        if(instancia == null) {
+            instancia = new MundoFuturista();
+        }
+        return instancia;
+    }
+
 }
