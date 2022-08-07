@@ -3,6 +3,7 @@ package main;
 import personagem.*;
 import escudos.*;
 import fabricas.*;
+import mundos.*;
 import poderes.*;
 
 public class Principal {
@@ -73,5 +74,18 @@ public class Principal {
         System.out.println("\n\nJogo avançado:\n");
         jogo2.jogar();
 
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+        // Testes do padrão Abstract Factory
+        MundoAbstrato mundo1 = new MundoMedieval();
+        MundoAbstrato mundo2 = new MundoFuturista();
+
+        Personagem arqueiro = mundo1.criarPersonagem();
+        mundo1.criarDefesa(arqueiro);
+
+        Personagem robo = mundo2.criarPersonagem();
+        mundo2.criarDefesa(robo);
+
+        System.out.printf("\n\nMundo Medieval:\n - %s, escudo: %s\n", arqueiro.getClass().getName(), arqueiro.getEscudo().getClass().getName());
+        System.out.printf("Mundo Futurista:\n - %s, escudo: %s\n", robo.getClass().getName(), robo.getEscudo().getClass().getName());
     }
 }
