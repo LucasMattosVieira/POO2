@@ -90,7 +90,7 @@ public class Principal {
         System.out.printf("Mundo Futurista:\n - %s, escudo: %s\n", robo.getClass().getName(), robo.getEscudo().getClass().getName());
     
         //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
-        // Testes do padrão Composite
+        // Testes dos padrões Composite e Template Method
         System.out.println("\n\n");
         
         Personagem heroi = new Robo();
@@ -101,12 +101,28 @@ public class Principal {
         Saida saida = new Saida();
         Abismo abismo = new Abismo();
         
-        Sala sala1 = new Sala(saida, abismo, inimigo3);
-        Sala sala2 = new Sala(sala1, abismo, inimigo1);
-        Sala sala3 = new Sala(sala2, sala1, inimigo2);
+        Sala1 sala1 = new Sala1(saida, abismo, inimigo3);
+        Sala1 sala2 = new Sala1(sala1, abismo, inimigo1);
+        Sala1 sala3 = new Sala1(sala2, sala1, inimigo2);
         
-        System.out.println("--- ENTRANDO NO LABIRINTO");
+        System.out.println("--- ENTRANDO NO LABIRINTO 1");
         
         sala3.jogar(heroi);
+
+
+        System.out.println("\n\n");
+
+        Personagem vision = new Robo();
+        Personagem ultron_minion_1 = new Robo();
+        Personagem ultron_minion_2 = new Robo();
+        Personagem ultron_minion_3 = new Robo();
+
+        Sala2 room1 = new Sala2(abismo, saida, ultron_minion_1);
+        Sala2 room2 = new Sala2(room1, saida, ultron_minion_2);
+        Sala2 room3 = new Sala2(room1, room2, ultron_minion_3);
+
+        System.out.println("--- ENTRANDO NO LABIRINTO 2");
+
+        room3.jogar(vision);
     }
 }

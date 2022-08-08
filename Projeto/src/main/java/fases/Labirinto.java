@@ -2,6 +2,11 @@ package fases;
 
 import personagem.*;
 
-public interface Labirinto {
-    public abstract void jogar(Personagem p);
+public abstract class Labirinto {
+    public final void jogar(Personagem p) {
+        lutar(p);
+    }
+
+    public abstract int selecionarCaminho();
+    public abstract void lutar(Personagem p);
 }
