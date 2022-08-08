@@ -3,6 +3,7 @@ package main;
 import personagem.*;
 import escudos.*;
 import fabricas.*;
+import fases.*;
 import mundos.*;
 import poderes.*;
 
@@ -87,5 +88,25 @@ public class Principal {
 
         System.out.printf("\n\nMundo Medieval:\n - %s, escudo: %s\n", arqueiro.getClass().getName(), arqueiro.getEscudo().getClass().getName());
         System.out.printf("Mundo Futurista:\n - %s, escudo: %s\n", robo.getClass().getName(), robo.getEscudo().getClass().getName());
+    
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+        // Testes do padrão Composite
+        System.out.println("\n\n");
+        
+        Personagem heroi = new Robo();
+        Personagem inimigo1 = new Personagem02();
+        Personagem inimigo2 = new Personagem04();
+        Personagem inimigo3 = new Arqueiro();
+        
+        Saida saida = new Saida();
+        Abismo abismo = new Abismo();
+        
+        Sala sala1 = new Sala(saida, abismo, inimigo3);
+        Sala sala2 = new Sala(sala1, abismo, inimigo1);
+        Sala sala3 = new Sala(sala2, sala1, inimigo2);
+        
+        System.out.println("--- ENTRANDO NO LABIRINTO");
+        
+        sala3.jogar(heroi);
     }
 }
