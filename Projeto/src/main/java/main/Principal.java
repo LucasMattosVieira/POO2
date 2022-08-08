@@ -124,5 +124,41 @@ public class Principal {
         System.out.println("--- ENTRANDO NO LABIRINTO 2");
 
         room3.jogar(vision);
+        
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+        // Testes em relação a Threads
+        System.out.println("\n\n");
+        
+        System.out.println("--- INÍCIO DO JOGO"); 
+        
+        Personagem frodo = new Personagem01();
+        Personagem sam = new Personagem02();
+        Personagem anao = new Personagem03();
+        Personagem elfo = new Personagem04();
+        Personagem gandalf = new Personagem05();
+        
+        Thread t1 = new Thread(new DungeonExplorer(sala3, frodo));
+        Thread t2 = new Thread(new DungeonExplorer(sala3, sam));
+        Thread t3 = new Thread(new DungeonExplorer(sala3, anao));
+        Thread t4 = new Thread(new DungeonExplorer(sala3, elfo));
+        Thread t5 = new Thread(new DungeonExplorer(sala3, gandalf));
+        
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+        t5.start();
+        
+        try{
+            t1.join();
+            t2.join();
+            t3.join();
+            t4.join();
+            t5.join();
+        } catch(Exception e) {
+            System.out.println("Algo de errado não está certo...");
+        }
+
+        System.out.println("--- FIM DO JOGO, TODOS OS PERSONAGENS TERMINARAM");    
     }
 }
