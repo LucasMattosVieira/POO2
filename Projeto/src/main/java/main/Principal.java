@@ -6,9 +6,10 @@ import fabricas.*;
 import fases.*;
 import mundos.*;
 import poderes.*;
+import visao.VisualGame;
 
 public class Principal {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         Personagem personagem = new Personagem01();
         
         System.out.printf("%f - %s\n", personagem.getEnergia(), personagem.getEstado().getClass().getName());
@@ -121,9 +122,9 @@ public class Principal {
         Sala2 room2 = new Sala2(room1, saida, ultron_minion_2);
         Sala2 room3 = new Sala2(room1, room2, ultron_minion_3);
 
-        System.out.println("--- ENTRANDO NO LABIRINTO 2");
+        // System.out.println("--- ENTRANDO NO LABIRINTO 2");
 
-        room3.jogar(vision);
+        // room3.jogar(vision);
         
         //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
         // Testes em relação a Threads
@@ -160,5 +161,11 @@ public class Principal {
         }
 
         System.out.println("--- FIM DO JOGO, TODOS OS PERSONAGENS TERMINARAM");    
+
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+        // Teste do padrão Observer
+
+        VisualGame jogo = new VisualGame();
+        jogo.jogar(jogo);
     }
 }
